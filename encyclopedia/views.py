@@ -9,7 +9,6 @@ def index(request):
     })
 
 def get_page(request, title):
-
     
     content = util.get_entry(title)
     
