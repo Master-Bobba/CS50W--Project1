@@ -10,7 +10,7 @@
     {% endif%}
     <form action="{% url 'create' %}" method="post">
         {% csrf_token %}
-        {{ entry_form}}
-        <input type="submit">
+        {{ entry_form }}
+        <input type="submit" value="Save">
     </form>
 {% endblock%}

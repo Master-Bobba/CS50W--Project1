@@ -12,7 +12,7 @@ class NewQueryForm(forms.Form):
 
 class NewEntryForm(forms.Form):
     title=forms.CharField(label="Title")
-    content=forms.CharField(label="Content")
+    content=forms.CharField(label="Content", widget=forms.Textarea(attrs={'name': 'content', 'rows':5, 'cols':1 }))
 
 
 def index(request):
@@ -83,7 +83,7 @@ def create(request):
                         "wiki_entry": entry
                     })
 
-            util.save_entry(new_title, new_title)
+            util.save_entry(new_title, new_content)
             return render(request, 'encyclopedia/page.html',{
                 "form": NewQueryForm(),
                 "title": new_title,
