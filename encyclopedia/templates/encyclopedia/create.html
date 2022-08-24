@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block body %}
+    <h2>Create a new Wiki Entry</h2>
+
+    {% if exists %}
+        <h4> Wikipedia page already exists. Check out <a href="/wiki/{{ wiki_entry }}">{{wiki_entry}}</a></h4>
+    {% else %}
+
+    {% endif%}
+    <form action="{% url 'create' %}" method="post">
+        {% csrf_token %}
+        {{ entry_form}}
+        <input type="submit">
+    </form>
+{% endblock%}
