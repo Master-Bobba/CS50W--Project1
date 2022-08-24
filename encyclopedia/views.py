@@ -8,3 +8,18 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def get_page(request, title):
+
+    
+    content = util.get_entry(title)
+    
+    if content is None:
+        return render(request, "encyclopedia/error.html", {
+            "title": title
+        })
+    
+    return render(request, "encyclopedia/page.html",{
+        "title": title,
+        "content": content
+    })
+
