@@ -22,12 +22,14 @@ def get_page(request, title):
     
     if content is None:
         return render(request, "encyclopedia/error.html", {
-            "title": title
+            "title": title,
+            "form": NewTaskForm()
         })
     
     return render(request, "encyclopedia/page.html",{
         "title": title,
-        "content": content
+        "content": content,
+        "form": NewTaskForm()
     })
 
 def search(request):
