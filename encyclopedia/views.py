@@ -6,6 +6,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse 
 import random
 
+from  markdown2 import Markdown
+markdowner = Markdown()
+
 from . import util
 
 class NewQueryForm(forms.Form):
@@ -29,6 +32,7 @@ def index(request):
 def get_page(request, title):
     
     content = util.get_entry(title)
+    markdown_content = markdowner.convert(content)
     
     if content is None:
         return render(request, "encyclopedia/error.html", {
@@ -38,7 +42,7 @@ def get_page(request, title):
     
     return render(request, "encyclopedia/page.html",{
         "title": title,
-        "content": content,
+        "content": markdown_content,
         "form": NewQueryForm()
     })
 

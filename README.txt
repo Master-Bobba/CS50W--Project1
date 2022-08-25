@@ -8,7 +8,9 @@ Status:
 -New Page       - DONE
 -Edit Page      - DONE
 -Random Page    - DONE
--Markdown to HTML - 
+-Markdown to HTML - DONE
+
+Project1 Complete! 
 
 
 Resources provided: https://cs50.harvard.edu/web/2020/projects/1/wiki/

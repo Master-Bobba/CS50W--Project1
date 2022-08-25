@@ -7,7 +7,7 @@
 {% block body %}
     <div>
         <h3> {{ title }}</h3>
-        {{ content }}
+        {{ content | safe }}
     </div>
     <div>
         <form action="{% url 'edit' title %}" method="post">
