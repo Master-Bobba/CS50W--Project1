@@ -7,7 +7,7 @@ Status:
 -Search         - DONE
 -New Page       - DONE
 -Edit Page      - DONE
--Random Page    -
+-Random Page    - DONE
 -Markdown to HTML - 
 
 

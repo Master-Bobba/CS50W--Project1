@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django import forms
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse 
+import random
 
 from . import util
 
@@ -123,3 +124,17 @@ def editsave(request):
                 "title": edit_title,
                 "content": edit_content
             })
+
+def random_page(request):
+
+    entries = util.list_entries()
+    random_entry = random.choice(entries)
+    random_content = util.get_entry(random_entry)
+
+    return HttpResponseRedirect(reverse("title", args=[random_entry]))
+    
+    render(request, 'encyclopedia/page.html',{
+        "form": NewQueryForm(),
+        "title": random_entry,
+        "content": random_content
+    }) 
