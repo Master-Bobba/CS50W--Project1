@@ -12,7 +12,10 @@ class NewQueryForm(forms.Form):
 
 class NewEntryForm(forms.Form):
     title=forms.CharField(label="Title")
-    content=forms.CharField(label="Content", widget=forms.Textarea(attrs={'name': 'content', 'rows':5, 'cols':1 }))
+    content=forms.CharField(label="Content", widget=forms.Textarea(attrs={'name': 'content', 'rows':2, 'cols':1 }))
+
+class NewEditForm(forms.Form):
+    edit=forms.CharField(label="Edit Content", widget=forms.Textarea(attrs={'name': 'content', 'rows':2, 'cols':1 }))
 
 
 def index(request):
@@ -94,3 +97,13 @@ def create(request):
         "form": NewQueryForm(),
         "entry_form": NewEntryForm()
     })
+
+def edit(request, title):
+    if request.method == "POST":
+        content = util.get_entry(title)
+        return render(request, "encyclopedia/edit.html", {
+            "form": NewQueryForm(),
+            "edit_form": NewEditForm(),
+            "title": title,
+            "content": content
+        })
