@@ -15,7 +15,8 @@ class NewEntryForm(forms.Form):
     content=forms.CharField(label="Content", widget=forms.Textarea(attrs={'name': 'content', 'rows':2, 'cols':1 }))
 
 class NewEditForm(forms.Form):
-    edit=forms.CharField(label="Edit Content", widget=forms.Textarea(attrs={'name': 'content', 'rows':2, 'cols':1 }))
+    edit_title=forms.CharField(label="Title", widget=forms.TextInput(attrs={'readonly': True }))
+    edit_content=forms.CharField(label="Edit Content", widget=forms.Textarea(attrs={'name': 'content', 'rows':2, 'cols':1 }))
 
 
 def index(request):
@@ -101,9 +102,24 @@ def create(request):
 def edit(request, title):
     if request.method == "POST":
         content = util.get_entry(title)
+        edit_form = NewEditForm(initial={'edit_title': title, 'edit_content': content})
         return render(request, "encyclopedia/edit.html", {
             "form": NewQueryForm(),
-            "edit_form": NewEditForm(),
+            "edit_form": edit_form,
             "title": title,
             "content": content
         })
+
+def editsave(request):
+    if request.method == "POST":
+        form = NewEditForm(request.POST)
+        if form.is_valid():
+            edit_title=form.cleaned_data["edit_title"]
+            edit_content=form.cleaned_data["edit_content"]
+
+            util.save_entry(edit_title, edit_content)
+            return render(request, 'encyclopedia/page.html', {
+                "form": NewQueryForm(),
+                "title": edit_title,
+                "content": edit_content
+            })

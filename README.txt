@@ -6,7 +6,7 @@ Status:
 -Index Page     - DONE
 -Search         - DONE
 -New Page       - DONE
--Edit Page      -
+-Edit Page      - DONE
 -Random Page    -
 -Markdown to HTML - 
 

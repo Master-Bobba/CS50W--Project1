@@ -9,7 +9,10 @@
         <h2> {{ title }}</h2>
     </div>
     <div>
-        {{content}}
+        <form action="{% url 'editsave' %}" method="post">
+            {% csrf_token %}
+            {{ edit_form }}
+            <button> Update page</button>
     </div>
 
     
