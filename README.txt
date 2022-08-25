@@ -8,7 +8,7 @@ Status:
 -New Page       - DONE
 -Edit Page      - DONE
 -Random Page    - DONE
--Markdown to HTML - DONE
+-Markdown to HTML - DONE - info: https://zorzolileonel.medium.com/markdown2-django-dbd59d83e172 
 
 Project1 Complete! 
 
